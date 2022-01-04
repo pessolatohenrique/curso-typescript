@@ -23,8 +23,6 @@ Para compilar o código TypeScript (TS), execute:
 
     npm run compile
 
-E, por fim, rode o projeto:
+Para compilar e executar o código simultaneamente, em modo watch, execute:
 
-```
-  npm run server
-```
+    npm start
