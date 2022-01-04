@@ -19,6 +19,10 @@ Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 
     npm install
 
+Para compilar o código TypeScript (TS), execute:
+
+    npm run compile
+
 E, por fim, rode o projeto:
 
 ```
