@@ -1,9 +1,9 @@
 import { Negociacao } from "../models/Negociacao.js";
 
 export class NegociacaoController {
-  private _data;
-  private _quantidade;
-  private _valor;
+  private _data: HTMLInputElement;
+  private _quantidade: HTMLInputElement;
+  private _valor: HTMLInputElement;
 
   constructor() {
     this._data = document.querySelector("#data");
@@ -11,12 +11,17 @@ export class NegociacaoController {
     this._valor = document.querySelector("#valor");
   }
 
-  adiciona() {
-    const negociacao = new Negociacao(
-      this._data.value,
-      this._quantidade.value,
-      this._valor.value
-    );
-    console.log("Campos: ", negociacao);
+  adiciona(): void {
+    const negociacao = this.criaNegociacao();
+    console.log("Dados da negociação: ", negociacao, negociacao.volume);
+  }
+
+  criaNegociacao(): Negociacao {
+    const dataFormatada = this._data.value.replace(/-/g, ",");
+    const data = new Date(dataFormatada);
+    const quantidade = parseInt(this._quantidade.value);
+    const valor = parseFloat(this._valor.value);
+
+    return new Negociacao(data, quantidade, valor);
   }
 }
