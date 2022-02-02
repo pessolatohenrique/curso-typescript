@@ -22,9 +22,7 @@ export class NegociacaoController {
   adiciona(): void {
     const negociacao = this.criaNegociacao();
     negociacoes.adiciona(negociacao);
-    console.log("Lista de negociações: ", negociacoes.lista());
-    negociacoesView.update(negociacoes);
-    mensagemView.update("Salvo com sucesso!");
+    this.atualizaView();
   }
 
   private criaNegociacao(): Negociacao {
@@ -34,5 +32,10 @@ export class NegociacaoController {
     const valor = parseFloat(this._valor.value);
 
     return new Negociacao(data, quantidade, valor);
+  }
+
+  private atualizaView(): void {
+    negociacoesView.update(negociacoes);
+    mensagemView.update("Salvo com sucesso!");
   }
 }
