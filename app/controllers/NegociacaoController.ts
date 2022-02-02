@@ -27,7 +27,7 @@ export class NegociacaoController {
     mensagemView.update("Salvo com sucesso!");
   }
 
-  criaNegociacao(): Negociacao {
+  private criaNegociacao(): Negociacao {
     const dataFormatada = this._data.value.replace(/-/g, ",");
     const data = new Date(dataFormatada);
     const quantidade = parseInt(this._quantidade.value);
