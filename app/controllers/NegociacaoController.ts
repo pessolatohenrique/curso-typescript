@@ -21,7 +21,11 @@ export class NegociacaoController {
   }
 
   adiciona(): void {
-    const negociacao = this.criaNegociacao();
+    const negociacao = Negociacao.cria(
+      this._data.value,
+      this._quantidade.value,
+      this._valor.value
+    );
 
     if (!this.ehDiaUtil(negociacao.data)) {
       mensagemView.update("Só é permitido negociar em dias úteis");
@@ -36,15 +40,6 @@ export class NegociacaoController {
     return (
       data.getDay() > DiaSemana.DOMINGO && data.getDay() < DiaSemana.SABADO
     );
-  }
-
-  private criaNegociacao(): Negociacao {
-    const dataFormatada = this._data.value.replace(/-/g, ",");
-    const data = new Date(dataFormatada);
-    const quantidade = parseInt(this._quantidade.value);
-    const valor = parseFloat(this._valor.value);
-
-    return new Negociacao(data, quantidade, valor);
   }
 
   private atualizaView(): void {

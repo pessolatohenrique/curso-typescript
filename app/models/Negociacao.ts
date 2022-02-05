@@ -15,4 +15,17 @@ export class Negociacao {
     const newDate = new Date(this._data.getTime());
     return newDate;
   }
+
+  public static cria(
+    dataAntes: string,
+    quantidadeAntes: string,
+    valorAntes: string
+  ): Negociacao {
+    const dataFormatada = dataAntes.replace(/-/g, ",");
+    const data = new Date(dataFormatada);
+    const quantidade = parseInt(quantidadeAntes);
+    const valor = parseFloat(valorAntes);
+
+    return new Negociacao(data, quantidade, valor);
+  }
 }
