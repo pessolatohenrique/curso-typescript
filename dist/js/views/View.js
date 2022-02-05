@@ -1,8 +1,14 @@
 export class View {
-    constructor(elemento) {
+    constructor(elemento, ativarEscape) {
+        this.ativarEscape = false;
         this.elemento = document.querySelector(elemento);
+        this.ativarEscape = ativarEscape;
     }
     update(model) {
-        this.elemento.innerHTML = this.template(model);
+        let template = this.template(model);
+        if (this.ativarEscape) {
+            template = template.replace(/<script>[\s\S]*?<\/script>/, "");
+        }
+        this.elemento.innerHTML = template;
     }
 }

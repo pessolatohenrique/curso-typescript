@@ -5,7 +5,7 @@ import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
 
 const negociacoes = new NegociacaoLista();
-const negociacoesView = new NegociacaoView("#negociacoesView");
+const negociacoesView = new NegociacaoView("#negociacoesView", true);
 const mensagemView = new MensagemView("#mensagemView");
 
 export class NegociacaoController {
