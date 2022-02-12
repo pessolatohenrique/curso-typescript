@@ -3,8 +3,8 @@ export abstract class View<T> {
   private ativarEscape = false;
 
   constructor(elemento: string, ativarEscape?: boolean) {
-    this.elemento = document.querySelector(elemento);
-    this.ativarEscape = ativarEscape;
+    this.elemento = document.querySelector(elemento) as HTMLInputElement;
+    this.ativarEscape = ativarEscape as boolean;
   }
 
   protected abstract template(model: T): string;
