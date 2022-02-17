@@ -1,8 +1,15 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 import { Negociacao } from "../models/Negociacao.js";
 import { NegociacaoLista } from "../models/NegociacaoLista.js";
 import { NegociacaoView } from "../views/NegociacaoView.js";
 import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
+import { escreveLog } from "../decorators/logs.js";
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView", true);
 const mensagemView = new MensagemView("#mensagemView");
@@ -30,3 +37,9 @@ export class NegociacaoController {
         mensagemView.update("Salvo com sucesso!");
     }
 }
+__decorate([
+    escreveLog()
+], NegociacaoController.prototype, "adiciona", null);
+__decorate([
+    escreveLog()
+], NegociacaoController.prototype, "ehDiaUtil", null);

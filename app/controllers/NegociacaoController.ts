@@ -3,6 +3,7 @@ import { NegociacaoLista } from "../models/NegociacaoLista.js";
 import { NegociacaoView } from "../views/NegociacaoView.js";
 import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
+import { escreveLog } from "../decorators/logs.js";
 
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView", true);
@@ -22,6 +23,7 @@ export class NegociacaoController {
     negociacoesView.update(negociacoes);
   }
 
+  @escreveLog()
   adiciona(): void {
     const negociacao = Negociacao.cria(
       this._data.value,
@@ -38,6 +40,7 @@ export class NegociacaoController {
     this.atualizaView();
   }
 
+  @escreveLog()
   ehDiaUtil(data: Date): boolean {
     return (
       data.getDay() > DiaSemana.DOMINGO && data.getDay() < DiaSemana.SABADO
