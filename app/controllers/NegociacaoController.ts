@@ -4,6 +4,7 @@ import { NegociacaoView } from "../views/NegociacaoView.js";
 import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
 import { escreveLog } from "../decorators/logs.js";
+import { describe } from "../decorators/describe.js";
 
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView", true);
@@ -23,6 +24,7 @@ export class NegociacaoController {
     negociacoesView.update(negociacoes);
   }
 
+  @describe()
   @escreveLog(true)
   adiciona(): void {
     const negociacao = Negociacao.cria(

@@ -10,6 +10,7 @@ import { NegociacaoView } from "../views/NegociacaoView.js";
 import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
 import { escreveLog } from "../decorators/logs.js";
+import { describe } from "../decorators/describe.js";
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView", true);
 const mensagemView = new MensagemView("#mensagemView");
@@ -38,6 +39,7 @@ export class NegociacaoController {
     }
 }
 __decorate([
+    describe(),
     escreveLog(true)
 ], NegociacaoController.prototype, "adiciona", null);
 __decorate([
