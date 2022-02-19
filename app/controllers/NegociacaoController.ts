@@ -23,7 +23,7 @@ export class NegociacaoController {
     negociacoesView.update(negociacoes);
   }
 
-  @escreveLog()
+  @escreveLog(true)
   adiciona(): void {
     const negociacao = Negociacao.cria(
       this._data.value,
@@ -40,13 +40,13 @@ export class NegociacaoController {
     this.atualizaView();
   }
 
-  @escreveLog()
   ehDiaUtil(data: Date): boolean {
     return (
       data.getDay() > DiaSemana.DOMINGO && data.getDay() < DiaSemana.SABADO
     );
   }
 
+  @escreveLog()
   private atualizaView(): void {
     negociacoesView.update(negociacoes);
     mensagemView.update("Salvo com sucesso!");

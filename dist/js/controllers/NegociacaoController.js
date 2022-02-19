@@ -38,8 +38,8 @@ export class NegociacaoController {
     }
 }
 __decorate([
-    escreveLog()
+    escreveLog(true)
 ], NegociacaoController.prototype, "adiciona", null);
 __decorate([
     escreveLog()
-], NegociacaoController.prototype, "ehDiaUtil", null);
+], NegociacaoController.prototype, "atualizaView", null);
