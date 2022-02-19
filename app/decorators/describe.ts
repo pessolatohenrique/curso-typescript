@@ -5,7 +5,7 @@ export function describe() {
     descriptor: PropertyDescriptor
   ) {
     const originalMethod = descriptor.value;
-    descriptor.value = function (args: any) {
+    descriptor.value = function (...args: any) {
       console.log(
         `O método ${property} foi chamado em ${this.constructor.name}`
       );

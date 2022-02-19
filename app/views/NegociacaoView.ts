@@ -1,9 +1,12 @@
 import { NegociacaoLista } from "../models/NegociacaoLista";
 import { View } from "./View.js";
+import { escape } from "../decorators/escape.js";
 
 export class NegociacaoView extends View<NegociacaoLista> {
+  @escape()
   protected template(model: NegociacaoLista): string {
     return `
+        <script>console.log</script>
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
