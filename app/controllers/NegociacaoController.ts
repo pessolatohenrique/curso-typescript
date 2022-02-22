@@ -5,22 +5,21 @@ import { MensagemView } from "../views/MensagemView.js";
 import { DiaSemana } from "../enums/DiaSemana.js";
 import { escreveLog } from "../decorators/logs.js";
 import { describe } from "../decorators/describe.js";
+import { domInjector } from "../decorators/dom-injector.js";
 
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView");
 const mensagemView = new MensagemView("#mensagemView");
 
 export class NegociacaoController {
+  @domInjector("#data")
   private _data: HTMLInputElement;
+  @domInjector("#quantidade")
   private _quantidade: HTMLInputElement;
+  @domInjector("#valor")
   private _valor: HTMLInputElement;
 
   constructor() {
-    this._data = document.querySelector("#data") as HTMLInputElement;
-    this._quantidade = document.querySelector(
-      "#quantidade"
-    ) as HTMLInputElement;
-    this._valor = document.querySelector("#valor") as HTMLInputElement;
     negociacoesView.update(negociacoes);
   }
 
