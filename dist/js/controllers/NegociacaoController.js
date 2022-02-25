@@ -12,8 +12,10 @@ import { DiaSemana } from "../enums/DiaSemana.js";
 import { escreveLog } from "../decorators/logs.js";
 import { describe } from "../decorators/describe.js";
 import { domInjector } from "../decorators/dom-injector.js";
+import { NegociacoesService } from "../services/obtem-negociacoes.js";
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView");
+const negociacoesService = new NegociacoesService();
 const mensagemView = new MensagemView("#mensagemView");
 export class NegociacaoController {
     constructor() {
@@ -29,15 +31,9 @@ export class NegociacaoController {
         this.atualizaView();
     }
     importa() {
-        fetch("http://localhost:8080/dados")
-            .then((dados) => dados.json())
-            .then((dadosFinal) => dadosFinal.map((dado) => {
-            const novoDado = Object.assign(Object.assign({}, dado), { data: new Date() });
-            return novoDado;
-        }))
-            .then((dadosMapeados) => {
+        negociacoesService.obtemNegociacoes().then((dadosMapeados) => {
             for (const iterator of dadosMapeados) {
-                const negociacao = new Negociacao(iterator.data, iterator.montante, iterator.vezes);
+                const negociacao = new Negociacao(iterator.data, iterator._valor, iterator._quantidade);
                 negociacoes.adiciona(negociacao);
                 this.atualizaView();
             }
