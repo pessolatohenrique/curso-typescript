@@ -6,6 +6,7 @@ import { DiaSemana } from "../enums/DiaSemana.js";
 import { escreveLog } from "../decorators/logs.js";
 import { describe } from "../decorators/describe.js";
 import { domInjector } from "../decorators/dom-injector.js";
+import { INegociacao } from "../interfaces/INegociacao.js";
 
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView");
@@ -39,6 +40,28 @@ export class NegociacaoController {
 
     negociacoes.adiciona(negociacao);
     this.atualizaView();
+  }
+
+  importa(): void {
+    fetch("http://localhost:8080/dados")
+      .then((dados) => dados.json())
+      .then((dadosFinal: Array<INegociacao>) =>
+        dadosFinal.map((dado) => {
+          const novoDado = { ...dado, data: new Date() };
+          return novoDado;
+        })
+      )
+      .then((dadosMapeados) => {
+        for (const iterator of dadosMapeados) {
+          const negociacao = new Negociacao(
+            iterator.data,
+            iterator.montante,
+            iterator.vezes
+          );
+          negociacoes.adiciona(negociacao);
+          this.atualizaView();
+        }
+      });
   }
 
   ehDiaUtil(data: Date): boolean {

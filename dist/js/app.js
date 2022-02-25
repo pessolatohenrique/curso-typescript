@@ -8,3 +8,10 @@ formulario.addEventListener("submit", (event) => {
     event.preventDefault();
     negociacao.adiciona();
 });
+const btnImportar = document.querySelector(".btn-importar");
+if (!btnImportar) {
+    throw new Error("Seletor de botão não foi encontrado");
+}
+btnImportar.addEventListener("click", function () {
+    negociacao.importa();
+});
