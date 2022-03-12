@@ -26,4 +26,9 @@ export class Negociacao {
       Valor: ${this._valor}
     `);
     }
+    comparar(model) {
+        return (this._data.getDay() === model._data.getDay() &&
+            this._data.getMonth() === model._data.getMonth() &&
+            this._data.getFullYear() === model._data.getFullYear());
+    }
 }

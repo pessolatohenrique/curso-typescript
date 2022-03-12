@@ -1,6 +1,8 @@
 import { Imprimivel } from "../interfaces/Imprimivel.js";
+import { Comparavel } from "../interfaces/Comparavel.js";
+import { Modelavel } from "../interfaces/Modelavel.js";
 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements Modelavel<Negociacao> {
   constructor(
     private _data: Date,
     public readonly _valor: number,
@@ -8,6 +10,7 @@ export class Negociacao implements Imprimivel {
   ) {
     this._data = _data;
   }
+
   get volume() {
     return this._quantidade * this._valor;
   }
@@ -36,5 +39,13 @@ export class Negociacao implements Imprimivel {
       Quantidade: ${this._quantidade}
       Valor: ${this._valor}
     `);
+  }
+
+  public comparar(model: Negociacao): boolean {
+    return (
+      this._data.getDay() === model._data.getDay() &&
+      this._data.getMonth() === model._data.getMonth() &&
+      this._data.getFullYear() === model._data.getFullYear()
+    );
   }
 }
