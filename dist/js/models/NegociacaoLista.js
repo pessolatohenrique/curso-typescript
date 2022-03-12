@@ -8,4 +8,7 @@ export class NegociacaoLista {
     lista() {
         return this.negociacoes;
     }
+    paraTexto() {
+        console.log("Lista de negociações:", this.negociacoes);
+    }
 }

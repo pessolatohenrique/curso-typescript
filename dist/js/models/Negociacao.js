@@ -19,4 +19,11 @@ export class Negociacao {
         const valor = parseFloat(valorAntes);
         return new Negociacao(data, quantidade, valor);
     }
+    paraTexto() {
+        console.log(`**Dados da negociação**: 
+      Data: ${this._data}
+      Quantidade: ${this._quantidade}
+      Valor: ${this._valor}
+    `);
+    }
 }

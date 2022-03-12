@@ -13,6 +13,7 @@ import { escreveLog } from "../decorators/logs.js";
 import { describe } from "../decorators/describe.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { NegociacoesService } from "../services/obtem-negociacoes.js";
+import { GeradorLog } from "../utils/GeradorLog.js";
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView");
 const negociacoesService = new NegociacoesService();
@@ -29,6 +30,7 @@ export class NegociacaoController {
         }
         negociacoes.adiciona(negociacao);
         this.atualizaView();
+        GeradorLog.imprimir(negociacao, negociacoes);
     }
     importa() {
         negociacoesService.obtemNegociacoes().then((dadosMapeados) => {

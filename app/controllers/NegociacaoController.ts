@@ -8,6 +8,7 @@ import { describe } from "../decorators/describe.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { INegociacao } from "../interfaces/INegociacao.js";
 import { NegociacoesService } from "../services/obtem-negociacoes.js";
+import { GeradorLog } from "../utils/GeradorLog.js";
 
 const negociacoes = new NegociacaoLista();
 const negociacoesView = new NegociacaoView("#negociacoesView");
@@ -42,6 +43,8 @@ export class NegociacaoController {
 
     negociacoes.adiciona(negociacao);
     this.atualizaView();
+
+    GeradorLog.imprimir(negociacao, negociacoes);
   }
 
   importa(): void {
