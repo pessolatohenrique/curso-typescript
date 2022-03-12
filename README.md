@@ -2,7 +2,7 @@
 
 ### Sobre
 
-Projeto de Petshop construído com base no curso [TypeScript parte 1: Evoluindo seu JavaScript](https://cursos.alura.com.br/course/typescript-evoluindo-javascript)
+Projeto de Inserção de negociações, construído com base no curso [TypeScript parte 1: Evoluindo seu JavaScript](https://cursos.alura.com.br/course/typescript-evoluindo-javascript)
 
 ### Tecnologias
 
@@ -14,6 +14,10 @@ Projeto de Petshop construído com base no curso [TypeScript parte 1: Evoluindo 
 Realizar o clone do projeto
 
     git clone https://github.com/USER/curso-typescript.git
+
+Executar o backend, acessando a pasta "servidor-api"
+
+    cd servidor-api && npm start
 
 Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 
